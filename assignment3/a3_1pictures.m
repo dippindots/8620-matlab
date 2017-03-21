@@ -54,10 +54,27 @@ end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 bw = zeros(200,200);
 bw(50,50) = 1; bw(50,150) = 1; bw(150,100) = 1;
-D1 = bwdist(im,'euclidean');
+% for i = 1:rows
+%     for j = 1:cols
+%         im(i,1) = 0;
+%         im(i,cols) = 0;
+%         im(1,j) = 0;
+%         im(rows,j) = 0;
+%     end
+% end
+D1 = bwdist(contour,'euclidean');
 RGB1 = repmat(mat2gray(D1), [1 1 3]);
 figure
-imshow(RGB1),
+imshow(RGB1)
 title('Euclidean')
+figure
 %imcontour(D1)
 
+%inside
+D2 = bwdist(im,'euclidean');
+RGB2 = repmat(mat2gray(D2), [1 1 3]);
+figure
+imshow(RGB2)
+title('Euclidean')
+figure
+imcontour(D2)
